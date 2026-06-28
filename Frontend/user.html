@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard | SMART KHATA</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body onload="loadUserDashboard(); showSection('overviewSection')">
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">SMART KHATA</p>
+      <h1>Customer Dashboard</h1>
+    </div>
+    <div class="topbar-actions">
+      <span id="userWelcome">Customer</span>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    <aside class="sidebar">
+      <button data-section="overviewSection" onclick="showSection('overviewSection')">Overview</button>
+      <button data-section="itemsSection" onclick="showSection('itemsSection')">Items Bought</button>
+      <button data-section="paymentsSectionUser" onclick="showSection('paymentsSectionUser')">Recent Payments</button>
+      <button data-section="remindersSectionUser" onclick="showSection('remindersSectionUser')">Reminders</button>
+      <button data-section="settingsSection" onclick="showSection('settingsSection')">Change Password</button>
+    </aside>
+
+    <main class="content-area">
+      <section id="overviewSection" class="section-view">
+        <div class="summary-grid">
+          <div class="summary-card">
+            <span>Phone Number</span>
+            <strong id="userPhoneValue"></strong>
+          </div>
+          <div class="summary-card">
+            <span>Date of Purchase</span>
+            <strong id="purchaseDateValue"></strong>
+          </div>
+          <div class="summary-card">
+            <span>Total Amount</span>
+            <strong id="totalValue"></strong>
+          </div>
+          <div class="summary-card">
+            <span>Total Paid</span>
+            <strong id="paidValue"></strong>
+          </div>
+        </div>
+
+        <section class="payment-panel">
+          <div>
+            <h2>Overdue and Payment Option</h2>
+            <p class="helper-text">Your overdue balance is updated immediately after each recorded payment.</p>
+            <div id="paymentStatus" class="badge danger">Payment pending</div>
+            <h3 id="overdueValue"></h3>
+          </div>
+
+          <div class="qr-panel">
+            <img id="qrCodeImage" alt="Shopkeeper QR code">
+            <p class="helper-text">Scan the QR code to pay the shopkeeper online.</p>
+            <p class="upi-text" id="upiText"></p>
+          </div>
+        </section>
+
+        <section class="payment-entry">
+          <h3>Confirm Online Payment</h3>
+          <p class="helper-text">After paying through QR, enter the paid amount here and record it.</p>
+          <div class="inline-form">
+            <input id="paymentAmount" type="number" min="1" step="0.01" placeholder="Amount paid">
+            <button onclick="payOnline()">Payment Done</button>
+          </div>
+        </section>
+      </section>
+
+      <section id="itemsSection" class="section-view" style="display:none;">
+        <div class="section-header">
+          <div>
+            <h2>List of Items Bought</h2>
+            <p class="helper-text">Every item added by the shopkeeper will appear here.</p>
+          </div>
+        </div>
+        <ul id="itemsListUser" class="timeline-list"></ul>
+      </section>
+
+      <section id="paymentsSectionUser" class="section-view" style="display:none;">
+        <div class="section-header">
+          <div>
+            <h2>Recent Payments Made To Shopkeeper</h2>
+            <p class="helper-text">Your payment history is listed below.</p>
+          </div>
+        </div>
+        <ul id="userPaymentsList" class="timeline-list"></ul>
+      </section>
+
+      <section id="remindersSectionUser" class="section-view" style="display:none;">
+        <div class="section-header">
+          <div>
+            <h2>Reminder History</h2>
+            <p class="helper-text">Weekly reminders continue until your balance becomes zero.</p>
+          </div>
+        </div>
+        <ul id="userRemindersList" class="timeline-list"></ul>
+      </section>
+
+      <section id="settingsSection" class="section-view" style="display:none;">
+        <div class="section-header">
+          <div>
+            <h2>Change Password</h2>
+            <p class="helper-text">You can update your customer password anytime after first login.</p>
+          </div>
+        </div>
+        <div class="inline-form vertical">
+          <input type="password" id="oldPassword" placeholder="Current Password">
+          <input type="password" id="newPasswordUser" placeholder="New Password">
+          <button onclick="changePassword()">Update Password</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

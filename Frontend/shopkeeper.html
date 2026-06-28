@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopkeeper Dashboard | SMART KHATA</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body onload="loadShopkeeperDashboard(); showSection('customersSection')">
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">SMART KHATA</p>
+      <h1>Shopkeeper Dashboard</h1>
+    </div>
+    <div class="topbar-actions">
+      <span id="shopkeeperName">Shopkeeper</span>
+      <button class="secondary-btn" onclick="sendWeeklyRemindersNow()">Run Weekly Reminders</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    <aside class="sidebar">
+      <button data-section="customersSection" onclick="showSection('customersSection')">Customers</button>
+      <button data-section="paymentsSection" onclick="showSection('paymentsSection')">Recent Payments</button>
+      <button data-section="remindersSection" onclick="showSection('remindersSection')">Recent Reminders</button>
+      <button data-section="notesSection" onclick="showSection('notesSection')">Notes</button>
+    </aside>
+
+    <main class="content-area">
+      <section id="summaryCards" class="summary-grid"></section>
+
+      <section id="customersSection" class="section-view">
+        <div class="section-header">
+          <div>
+            <h2>Customers List</h2>
+            <p class="helper-text">Track pending balances, add new items, send reminders, and mark cash payments manually.</p>
+          </div>
+          <div class="section-actions">
+            <input type="text" id="searchInput" placeholder="Search by name or phone" oninput="searchCustomer()">
+            <button onclick="openModal()">Add Customer</button>
+          </div>
+        </div>
+        <div id="customerList" class="cards-stack"></div>
+      </section>
+
+      <section id="paymentsSection" class="section-view" style="display:none;">
+        <div class="section-header">
+          <div>
+            <h2>Recently Payment Done Customers</h2>
+            <p class="helper-text">Latest recorded online and cash payments are shown here.</p>
+          </div>
+        </div>
+        <ul id="paymentsList" class="timeline-list"></ul>
+      </section>
+
+      <section id="remindersSection" class="section-view" style="display:none;">
+        <div class="section-header">
+          <div>
+            <h2>Recent Reminders Sent To</h2>
+            <p class="helper-text">Weekly reminders stop automatically once the customer is fully paid.</p>
+          </div>
+        </div>
+        <ul id="remindersList" class="timeline-list"></ul>
+      </section>
+
+      <section id="notesSection" class="section-view" style="display:none;">
+        <div class="section-header">
+          <div>
+            <h2>Notes</h2>
+            <p class="helper-text">Store any shopkeeper notes here.</p>
+          </div>
+        </div>
+        <textarea id="notesBox" placeholder="Write any customer or payment notes here..."></textarea>
+        <button onclick="saveNotes()">Save Notes</button>
+      </section>
+    </main>
+  </div>
+
+  <div id="addCustomerModal" class="modal-overlay" style="display:none;">
+    <div class="modal-card">
+      <div class="section-header">
+        <div>
+          <h2>Add Customer</h2>
+          <p class="helper-text">Save customer details manually, including temporary password and purchased items.</p>
+        </div>
+        <button class="ghost-btn" onclick="closeModal()">Close</button>
+      </div>
+
+      <form id="customerForm" onsubmit="event.preventDefault(); addCustomer();">
+        <div class="form-grid">
+          <input id="customerName" placeholder="Customer Name" required>
+          <input id="phone" placeholder="Phone Number" required>
+          <input id="temporaryPassword" placeholder="Temporary Password" required>
+          <input id="purchaseDate" type="date" required>
+          <input id="initialPaidAmount" type="number" min="0" step="0.01" placeholder="Amount Already Paid">
+        </div>
+
+        <div class="detail-block">
+          <h3>Purchased Items</h3>
+          <div class="inline-form">
+            <input id="itemName" placeholder="Item Name">
+            <input id="itemCost" type="number" min="1" step="0.01" placeholder="Cost">
+            <button type="button" onclick="addItem()">Add Item</button>
+          </div>
+          <p class="helper-text">Calculated total for current items: <strong id="newCustomerTotal">?0.00</strong></p>
+          <ul id="itemsList" class="timeline-list"></ul>
+        </div>
+
+        <div class="modal-actions">
+          <button type="submit">Save Customer</button>
+          <button type="button" class="secondary-btn" onclick="closeModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
