@@ -1,0 +1,111 @@
+<svg width="1100" height="820" viewBox="0 0 1100 820" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1100" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF4DD"/>
+      <stop offset="1" stop-color="#E7F7ED"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="120" y1="110" x2="980" y2="710" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFDF7"/>
+      <stop offset="1" stop-color="#FFF8EA"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#713F12" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" markerWidth="13" markerHeight="13" refX="6.5" refY="6.5" orient="auto">
+      <path d="M0 0L13 6.5L0 13L3.8 6.5L0 0Z" fill="#9A3412"/>
+    </marker>
+    <style>
+      .title { font: 800 38px 'Segoe UI', sans-serif; fill: #1F2933; }
+      .subtitle { font: 500 18px 'Segoe UI', sans-serif; fill: #64748B; }
+      .layer { font: 800 24px 'Segoe UI', sans-serif; fill: #1F2933; }
+      .box-title { font: 700 21px 'Segoe UI', sans-serif; fill: #1F2933; }
+      .box-text { font: 500 15px 'Segoe UI', sans-serif; fill: #475569; }
+      .tag { font: 800 13px 'Segoe UI', sans-serif; fill: #9A3412; letter-spacing: 0.09em; }
+      .line { stroke: #9A3412; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .thin { stroke: #94A3B8; stroke-width: 2; stroke-dasharray: 8 8; }
+    </style>
+  </defs>
+
+  <rect width="1100" height="820" rx="34" fill="url(#bg)"/>
+  <rect x="44" y="42" width="1012" height="736" rx="34" fill="url(#panel)" opacity="0.96"/>
+
+  <text x="550" y="86" text-anchor="middle" class="tag">SMART KHATA</text>
+  <text x="550" y="128" text-anchor="middle" class="title">Project Architecture Diagram</text>
+  <text x="550" y="160" text-anchor="middle" class="subtitle">Client-server web app with Node.js, Express, and SQLite persistence</text>
+
+  <g filter="url(#shadow)">
+    <rect x="94" y="215" width="220" height="120" rx="24" fill="#FFF7ED" stroke="#FDBA74" stroke-width="2"/>
+    <text x="204" y="258" text-anchor="middle" class="box-title">Shopkeeper</text>
+    <text x="204" y="289" text-anchor="middle" class="box-text">Login, add customers,</text>
+    <text x="204" y="313" text-anchor="middle" class="box-text">payments, reminders</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="94" y="485" width="220" height="120" rx="24" fill="#EFF6FF" stroke="#93C5FD" stroke-width="2"/>
+    <text x="204" y="528" text-anchor="middle" class="box-title">Customer</text>
+    <text x="204" y="559" text-anchor="middle" class="box-text">Login, view items,</text>
+    <text x="204" y="583" text-anchor="middle" class="box-text">pay through QR</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="390" y="225" width="320" height="360" rx="28" fill="#FEFCE8" stroke="#FDE68A" stroke-width="2"/>
+    <text x="550" y="267" text-anchor="middle" class="layer">Frontend Layer</text>
+    <line x1="424" y1="286" x2="676" y2="286" class="thin"/>
+
+    <rect x="430" y="318" width="240" height="58" rx="18" fill="#FFFFFF" stroke="#FBBF24"/>
+    <text x="550" y="342" text-anchor="middle" class="box-title">HTML Pages</text>
+    <text x="550" y="364" text-anchor="middle" class="box-text">login, dashboard, password</text>
+
+    <rect x="430" y="405" width="240" height="58" rx="18" fill="#FFFFFF" stroke="#FBBF24"/>
+    <text x="550" y="429" text-anchor="middle" class="box-title">app.js</text>
+    <text x="550" y="451" text-anchor="middle" class="box-text">forms, fetch API, UI updates</text>
+
+    <rect x="430" y="492" width="240" height="58" rx="18" fill="#FFFFFF" stroke="#FBBF24"/>
+    <text x="550" y="516" text-anchor="middle" class="box-title">app.css</text>
+    <text x="550" y="538" text-anchor="middle" class="box-text">layout and styling</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="795" y="198" width="230" height="210" rx="28" fill="#F0FDF4" stroke="#86EFAC" stroke-width="2"/>
+    <text x="910" y="240" text-anchor="middle" class="layer">Backend Layer</text>
+    <line x1="828" y1="258" x2="992" y2="258" class="thin"/>
+
+    <text x="910" y="297" text-anchor="middle" class="box-title">server.js</text>
+    <text x="910" y="326" text-anchor="middle" class="box-text">Node.js + Express</text>
+    <text x="910" y="350" text-anchor="middle" class="box-text">REST APIs</text>
+    <text x="910" y="374" text-anchor="middle" class="box-text">Business rules</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="795" y="512" width="230" height="150" rx="28" fill="#F5F3FF" stroke="#C4B5FD" stroke-width="2"/>
+    <text x="910" y="554" text-anchor="middle" class="layer">Data Layer</text>
+    <line x1="834" y1="572" x2="986" y2="572" class="thin"/>
+
+    <text x="910" y="610" text-anchor="middle" class="box-title">SQLite Database</text>
+    <text x="910" y="637" text-anchor="middle" class="box-text">database.js</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="786" y="696" width="248" height="52" rx="20" fill="#FFFFFF" stroke="#CBD5E1"/>
+    <text x="910" y="728" text-anchor="middle" class="box-text">customers, items, payments, reminders, notes</text>
+  </g>
+
+  <path d="M314 275H388" class="line"/>
+  <path d="M314 545H388" class="line"/>
+  <path d="M710 405H792" class="line"/>
+  <path d="M910 408V510" class="line"/>
+  <path d="M910 662V694" class="line"/>
+
+  <path d="M795 348C750 348 750 463 710 463" class="line"/>
+  <text x="742" y="444" text-anchor="middle" class="box-text">JSON response</text>
+
+  <text x="350" y="253" text-anchor="middle" class="box-text">requests</text>
+  <text x="350" y="523" text-anchor="middle" class="box-text">requests</text>
+  <text x="750" y="384" text-anchor="middle" class="box-text">fetch API</text>
+
+  <g filter="url(#shadow)">
+    <rect x="130" y="675" width="540" height="70" rx="24" fill="#FFFFFF" stroke="#E2E8F0"/>
+    <text x="400" y="704" text-anchor="middle" class="box-title">Reminder Flow</text>
+    <text x="400" y="729" text-anchor="middle" class="box-text">Automatic reminders every 3 days until overdue becomes 0; manual reminders remain available.</text>
+  </g>
+</svg>
